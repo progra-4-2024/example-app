@@ -2,4 +2,5 @@
 @section('content')
     <h1> Gracias por Contactar VIP 🚀 </h1>
     <p>Apreciamos su mensaje.</p>
+    <p>Es un gusto atenderle</p>
 @endsection
