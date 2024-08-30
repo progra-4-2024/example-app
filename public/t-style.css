@@ -1,0 +1,34 @@
+@media only screen and (max-width: 600px) {
+			body {
+				background-color: lightblue;
+			}
+		}
+		@media only screen and (min-width: 601px) {
+			body {
+				background-color: yellow;
+			}
+		}
+		#page{
+			margin: auto;
+			width: 800px;
+			background-color: gray;
+		}
+		#header{
+			padding: 20px;
+		}
+		#menu{
+			width:100px;
+			float:left;
+			background-color: orange;
+		}
+		#content{
+			float:left;
+			background-color: lightgray;
+			width: 700px;
+		}
+		#footer{
+			clear:both;
+		}
+div.alert.alert-danger, input.is-invalid, label.is-invalid{
+	color:red;
+}
