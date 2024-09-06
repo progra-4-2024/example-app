@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>						<!-- tipo de documento -->
-<html>								<!-- elemento raíz -->
+<html >								<!-- elemento raíz -->
 	<head>							<!-- cabecera (invisible) -->
 		<meta charset="utf-8">		<!-- tipo de caracteres -->
 		<title>@yield('title')</title>

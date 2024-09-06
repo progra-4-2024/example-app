@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Mail\ContactoRecibido;
+use Illuminate\Support\Facades\Mail;
+
 class ContactoController extends Controller
 {
     public function index()
@@ -16,6 +19,8 @@ class ContactoController extends Controller
         ]);
         
         //enviar mensaje
+        Mail::send(new ContactoRecibido($request->input()));
+
         
         return redirect(route('contactado'), 302);
 
