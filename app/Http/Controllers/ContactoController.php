@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactoRecibido;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Contact;
+use Illuminate\Support\Facades\DB; //en los imports
 
 class ContactoController extends Controller
 {
@@ -17,12 +19,29 @@ class ContactoController extends Controller
             'email' => 'required|email:rfc,dns',
             'mensaje' => 'required',
         ]);
-        
-        //enviar mensaje
-        Mail::send(new ContactoRecibido($request->input()));
+        try {
+            DB::beginTransaction();
+            // Queries de Eloquent
+            
+            
+            
+            $input = $request->input();
+            $input['publicidad'] = isset($input['publicidad']);
+            Contact::create($input);
 
+            
+            Mail::send(new ContactoRecibido($request->input()));
+            //throw new \Exception("Error de email");
+            
+            
+            DB::commit();
+            return redirect(route('contactado'), 302);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+            // Manejar la excepción según sea necesario.
+        }
         
-        return redirect(route('contactado'), 302);
 
     }
     public function contacted(){
